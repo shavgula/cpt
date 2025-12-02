@@ -16,12 +16,20 @@ const express = require("express");
 const path = require("path");
 
 // ---------- SETTINGS (შეแกვე) ----------
-// ---------- SETTINGS (შეแกვე) ----------
-require("dotenv").config();
-client.login(process.env.TOKEN);
-; // ტოკენი აქ ჩასვი
-const CHANNEL_ID = "1441330193883987999";                    // აქ ჩასვი არხის ID
+require("dotenv").config();   // load .env
+
+const DISCORD_TOKEN = process.env.TOKEN;  // .env: TOKEN=your_token_here
+const CHANNEL_ID = "1441330193883987999"; // აქ ჩასვი არხის ID
 const LOG_PATH = "C:\\Users\\viado\\PyCharmMiscProject\\capture\\server.log";  // server.log-ის გზა
+
+// create Discord client (ONLY ONCE)
+const client = new Client({
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
+});
 
 const WEB_PORT = 3000;                                      // ვებ-პორტი (http://localhost:3000)
 // --------------------------------------
@@ -53,11 +61,6 @@ app.get("/stats", (req, res) => {
 
 app.listen(WEB_PORT, () => {
   console.log(`Web server running at http://localhost:${WEB_PORT}`);
-});
-
-// --- Discord client ---
-const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]
 });
 
 // Gang colors/emojis
