@@ -17,7 +17,9 @@ const path = require("path");
 
 // ---------- SETTINGS (შეแกვე) ----------
 // ---------- SETTINGS (შეแกვე) ----------
-const DISCORD_TOKEN = "MTQ0MTMyOTk0Mzg5OTQxMDUzMw.G-lyRf.Bs9rdyreSQMye8PZKFL2nknreRFzdfqf1N6cIU"; // ტოკენი აქ ჩასვი
+require("dotenv").config();
+client.login(process.env.TOKEN);
+; // ტოკენი აქ ჩასვი
 const CHANNEL_ID = "1441330193883987999";                    // აქ ჩასვი არხის ID
 const LOG_PATH = "C:\\Users\\viado\\PyCharmMiscProject\\capture\\server.log";  // server.log-ის გზა
 
